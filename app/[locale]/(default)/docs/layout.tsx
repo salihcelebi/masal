@@ -2,7 +2,7 @@ import { DocsSidebarNav } from '@/components/docs/DocsSidebarNav'
 
 interface DocsLayoutProps {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export default function DocsLayout({
@@ -13,7 +13,7 @@ export default function DocsLayout({
     <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
       <aside className="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block">
         <div className="fixed h-full py-6 pl-8 pr-6 lg:pt-10">
-          <DocsSidebarNav params={Promise.resolve(params)} />
+          <DocsSidebarNav params={params} />
         </div>
       </aside>
       <main className="relative py-6 lg:gap-10 lg:py-8">

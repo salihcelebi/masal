@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { createServerClient } from "@/lib/supabase/server-client";
 
 // 初始化 Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'dummy_key', {
   apiVersion: "2024-11-20.acacia",
 });
 
