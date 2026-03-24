@@ -9,18 +9,18 @@ export default function PaymentSuccess() {
     const sessionId = searchParams.get('session_id')
 
     useEffect(() => {
-        // 这里可以添加支付成功后的逻辑
-        console.log('Payment successful, session ID:', sessionId)
+        // Buraya ödeme başarılı olduktan sonraki mantık eklenebilir
+        console.log('Ödeme başarılı, oturum kimliği:', sessionId)
     }, [sessionId])
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-            <h1 className="text-3xl font-bold mb-4">Payment Successful!</h1>
+            <h1 className="text-3xl font-bold mb-4">Ödeme Başarılı!</h1>
             <p className="text-muted-foreground">
-                Thank you for your purchase. Your credits will be added to your account shortly.
+                Satın alımınız için teşekkür ederiz. Kredileriniz kısa süre içinde hesabınıza eklenecektir.
             </p>
             <Button>
-                <Link href="/">Back to Home</Link>
+                <Link href="/">Ana sayfaya dön</Link>
             </Button>
         </div>
     )
