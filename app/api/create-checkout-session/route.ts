@@ -2,10 +2,16 @@ import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// 初始化Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-11-20.acacia",
-});
+function getStripeClient() {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('Stripe secret key is missing')
+  }
+
+  return new Stripe(secretKey, {
+    apiVersion: "2024-11-20.acacia",
+  })
+}
 
 // 根据环境选择正确的 URL
 const baseUrl = process.env.NODE_ENV === "development"
@@ -14,6 +20,7 @@ const baseUrl = process.env.NODE_ENV === "development"
 
 export async function POST(request: Request) {
   try {
+    const stripe = getStripeClient()
     // 解析请求体
     const { priceId, userId, locale } = await request.json();
 
