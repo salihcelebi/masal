@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from "openai";
 import { createClient } from '@/lib/supabase/server';
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || 'dummy_key',
   baseURL: process.env.OPENAI_API_BASE,
 });
 
