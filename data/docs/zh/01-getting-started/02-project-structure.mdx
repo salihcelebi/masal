@@ -1,54 +1,51 @@
 ---
-description: Next.js 项目的文件夹和文件约定列表
-nav_title: 项目结构
-title: Next.js 项目结构02
+title: Next.js Proje Yapısı
+nav_title: Proje Yapısı
+description: Bir Next.js projesindeki klasör ve dosya kuralları listesi
 ---
 
-本页面提供了 Next.js 应用程序项目结构的概述。它涵盖了顶级文件和文件夹、配置文件以及 `app` 和 `pages` 目录中的路由约定。
+Bu sayfa, bir Next.js uygulamasının proje yapısına genel bir bakış sunar. Üst düzey klasörler, dosyalar, yapılandırma dosyaları ve `app` / `pages` dizinlerindeki yönlendirme kuralları özetlenir.
 
-点击文件和文件夹名称以了解每个约定的更多信息。
+## Üst Düzey Klasörler
 
-## 顶级文件夹
-
-顶级文件夹用于组织应用程序的代码和静态资产。
+Üst düzey klasörler uygulama kodunu ve statik varlıkları düzenlemek için kullanılır.
 
 <Image
-  alt="Route segments to path segments"
+  alt="Yol parçalarından rota parçalarına"
   srcLight="/docs/light/top-level-folders.png"
   srcDark="/docs/dark/top-level-folders.png"
   width="1600"
   height="525"
 />
 
-|                                                                          |                                    |
-| ------------------------------------------------------------------------ | ---------------------------------- |
-| [`app`](/docs/app/building-your-application/routing)                     | 应用路由器                         |
-| [`pages`](/docs/pages/building-your-application/routing)                 | 页面路由器                       |
-| [`public`](/docs/app/building-your-application/optimizing/static-assets) | 要提供的静态资产                 |
-| [`src`](/docs/app/building-your-application/configuring/src-directory)   | 可选的应用源文件夹               |
+|                                                                          |                              |
+| ------------------------------------------------------------------------ | ---------------------------- |
+| [`app`](/docs/app/building-your-application/routing)                     | App Router                   |
+| [`pages`](/docs/pages/building-your-application/routing)                 | Pages Router                 |
+| [`public`](/docs/app/building-your-application/optimizing/static-assets) | Sunulacak statik varlıklar   |
+| [`src`](/docs/app/building-your-application/configuring/src-directory)   | İsteğe bağlı kaynak klasörü  |
 
-## 顶级文件
+## Üst Düzey Dosyalar
 
-顶级文件用于配置应用程序、管理依赖项、运行中间件、集成监控工具和定义环境变量。
+Üst düzey dosyalar uygulamayı yapılandırmak, bağımlılıkları yönetmek, middleware çalıştırmak ve ortam değişkenlerini tanımlamak için kullanılır.
 
-|                                                                                             |                                         |
-| ------------------------------------------------------------------------------------------- | --------------------------------------- |
-| **Next.js**                                                                                 |                                         |
-| [`next.config.js`](/docs/app/api-reference/next-config-js)                                  | Next.js 的配置文件                     |
-| [`package.json`](/docs/getting-started/installation#manual-installation)                    | 项目依赖项和脚本                       |
-| [`instrumentation.ts`](/docs/app/building-your-application/optimizing/instrumentation)      | OpenTelemetry 和仪器文件               |
-| [`middleware.ts`](/docs/app/building-your-application/routing/middleware)                   | Next.js 请求中间件                     |
-| [`.env`](/docs/app/building-your-application/configuring/environment-variables)             | 环境变量                               |
-| [`.env.local`](/docs/app/building-your-application/configuring/environment-variables)       | 本地环境变量                           |
-| [`.env.production`](/docs/app/building-your-application/configuring/environment-variables)  | 生产环境变量                           |
-| [`.env.development`](/docs/app/building-your-application/configuring/environment-variables) | 开发环境变量                           |
-| [`.eslintrc.json`](/docs/app/building-your-application/configuring/eslint)                  | ESLint 的配置文件                      |
-| `.gitignore`                                                                                | 要忽略的 Git 文件和文件夹             |
-| `next-env.d.ts`                                                                             | Next.js 的 TypeScript 声明文件        |
-| `tsconfig.json`                                                                             | TypeScript 的配置文件                  |
-| `jsconfig.json`                                                                             | JavaScript 的配置文件                  |
+|                                                                                             |                                     |
+| ------------------------------------------------------------------------------------------- | ----------------------------------- |
+| **Next.js**                                                                                 |                                     |
+| [`next.config.js`](/docs/app/api-reference/next-config-js)                                  | Next.js yapılandırma dosyası        |
+| [`package.json`](/docs/getting-started/installation#manual-installation)                    | Proje bağımlılıkları ve scriptler   |
+| [`instrumentation.ts`](/docs/app/building-your-application/optimizing/instrumentation)      | OpenTelemetry ve instrumentation     |
+| [`middleware.ts`](/docs/app/building-your-application/routing/middleware)                   | Next.js istek middleware'i          |
+| [`.env`](/docs/app/building-your-application/configuring/environment-variables)             | Ortam değişkenleri                  |
+| [`.env.local`](/docs/app/building-your-application/configuring/environment-variables)       | Yerel ortam değişkenleri            |
+| [`.env.production`](/docs/app/building-your-application/configuring/environment-variables)  | Üretim ortamı değişkenleri          |
+| [`.env.development`](/docs/app/building-your-application/configuring/environment-variables) | Geliştirme ortamı değişkenleri      |
+| [`.eslintrc.json`](/docs/app/building-your-application/configuring/eslint)                  | ESLint yapılandırma dosyası         |
+| `.gitignore`                                                                                | Yoksayılacak Git dosyaları          |
+| `next-env.d.ts`                                                                             | Next.js TypeScript bildirim dosyası |
+| `tsconfig.json`                                                                             | TypeScript yapılandırma dosyası     |
+| `jsconfig.json`                                                                             | JavaScript yapılandırma dosyası     |
 
-## `app` 路由约定
+## `app` Yönlendirme Kuralları
 
-以下文件约定用于定义路由并处理 [`app` 路由器](/docs/app) 中的元数据。
-
+Aşağıdaki dosya kuralları, [`app` router](/docs/app) içinde rota tanımı ve metadata yönetimi için kullanılır.

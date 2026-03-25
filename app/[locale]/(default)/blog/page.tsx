@@ -15,7 +15,7 @@ export async function generateMetadata({
   return genPageMetadata({ title: 'Blog', params: resolvedParams })
 }
 
-// 封装获取博客文章的异步函数
+// Blog yazılarını getiren asenkron fonksiyon
 async function fetchLocalePosts(locale: string) {
   try {
     const posts = allCoreContent(
@@ -30,7 +30,7 @@ async function fetchLocalePosts(locale: string) {
   }
 }
 
-// 计算分页数据
+// Sayfalama verisini hesapla
 function getPaginationData(posts: any[], pageNumber: number) {
   if (!Array.isArray(posts)) {
     return {
@@ -72,7 +72,7 @@ export default async function BlogPage({
     return (
       <ListLayout
         posts={posts}
-        title="All Posts"
+        title="Tüm Yazılar"
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
         locale={resolvedParams.locale}
@@ -80,6 +80,6 @@ export default async function BlogPage({
     )
   } catch (error) {
     console.error('Error in BlogPage:', error)
-    return <div>Error loading blog posts</div>
+    return <div>Blog yazıları yüklenirken hata oluştu</div>
   }
 }

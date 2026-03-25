@@ -2,10 +2,16 @@ import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// 初始化Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-11-20.acacia",
-});
+function getStripeClient() {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('Stripe secret key is missing')
+  }
+
+  return new Stripe(secretKey, {
+    apiVersion: "2024-11-20.acacia",
+  })
+}
 
 // 根据环境选择正确的 URL
 const baseUrl = process.env.NODE_ENV === "development"
@@ -14,13 +20,14 @@ const baseUrl = process.env.NODE_ENV === "development"
 
 export async function POST(request: Request) {
   try {
+    const stripe = getStripeClient()
     // 解析请求体
     const { priceId, userId, locale } = await request.json();
 
     // 验证必要参数
     if (!priceId || !userId) {
       return NextResponse.json(
-        { error: "Missing required parameters" },
+        { error: "Gerekli parametreler eksik" },
         { status: 400 }
       );
     }
@@ -38,7 +45,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Product metadata missing required fields (credits or valid_year)",
+            "Ürün meta verisinde gerekli alanlar eksik (credits veya valid_year)",
         },
         { status: 400 }
       );
@@ -49,7 +56,7 @@ export async function POST(request: Request) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user || user.id !== userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Yetkisiz işlem" }, { status: 401 });
     }
 
     // 创建Stripe结账会话
@@ -99,7 +106,7 @@ export async function POST(request: Request) {
       
       // 如果是关键错误，可以选择中断流程
       return NextResponse.json(
-        { error: "Failed to create payment record" },
+        { error: "Ödeme kaydı oluşturulamadı" },
         { status: 500 }
       );
     }
@@ -112,7 +119,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Checkout session error:", error);
     return NextResponse.json(
-      { error: "Error creating checkout session" },
+      { error: "Ödeme oturumu oluşturulurken hata oluştu" },
       { status: 500 }
     );
   }
