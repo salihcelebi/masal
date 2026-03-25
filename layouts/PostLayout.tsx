@@ -67,7 +67,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           src={author.avatar}
                           width={38}
                           height={38}
-                          alt="avatar"
+                          alt="profil görseli"
                           className="h-10 w-10 rounded-full"
                         />
                       )}
@@ -147,9 +147,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                  aria-label="Back to the blog"
+                  aria-label="Bloga dön"
                 >
-                  &larr; Back to the blog
+                  &larr; Bloga dön
                 </Link>
               </div>
             </footer>

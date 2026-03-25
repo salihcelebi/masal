@@ -42,15 +42,15 @@ export async function POST(request: NextRequest) {
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
       console.error("STRIPE_WEBHOOK_SECRET is not configured");
       return new NextResponse(
-        JSON.stringify({ error: "Server configuration error" }),
+        JSON.stringify({ error: "Sunucu yapılandırma hatası" }),
         { status: 500, headers }
       );
     }
 
     if (!signature) {
-      console.error("No stripe signature found");
+      console.error("Stripe imzası bulunamadı");
       return new NextResponse(
-        JSON.stringify({ error: "No stripe signature found" }),
+        JSON.stringify({ error: "Stripe imzası bulunamadı" }),
         { status: 400, headers }
       );
     }
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
       console.error("Webhook signature verification failed:", err);
       return new NextResponse(
         JSON.stringify({ 
-          error: "Webhook signature verification failed",
+          error: "Webhook imza doğrulaması başarısız oldu",
           details: err instanceof Error ? err.message : "Unknown error"
         }),
         { status: 400, headers }
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
       if (!metadata) {
         console.error("No metadata found in session");
         return NextResponse.json(
-          { error: "Missing metadata" },
+          { error: "Meta veri eksik" },
           { status: 400 }
         );
       }
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       if (!userId || !credits || !valid_year) {
         console.error("Missing metadata in session:", session.id);
         return NextResponse.json(
-          { error: "Missing required metadata" },
+          { error: "Gerekli meta veriler eksik" },
           { status: 400 }
         );
       }
@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
           if (insertError) {
             console.error("Error creating new user profile:", insertError);
             return NextResponse.json(
-              { error: "Error creating user profile" },
+              { error: "Kullanıcı profili oluşturulamadı" },
               { status: 500 }
             );
           }
@@ -192,7 +192,7 @@ export async function POST(request: NextRequest) {
       if (updateUserError) {
         console.error("Error updating user credits:", updateUserError);
         return NextResponse.json(
-          { error: "Error updating user credits" },
+          { error: "Kredi bilgileri güncellenemedi" },
           { status: 500 }
         );
       }
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
     console.error("Webhook handler failed:", error);
     return new NextResponse(
       JSON.stringify({
-        error: "Webhook handler failed",
+        error: "Webhook işleyicisi başarısız oldu",
         details: error instanceof Error ? error.message : "Unknown error"
       }),
       { status: 500, headers }

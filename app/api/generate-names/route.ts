@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json(
-      { error: "Failed to generate names" },
+      { error: "İsimler oluşturulamadı" },
       { status: 500 }
     );
   }

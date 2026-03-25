@@ -67,6 +67,11 @@ export default function LoginButton() {
 
   // Kullanıcı oturumunu başlat
   const initializeSession = useCallback(async () => {
+    if (!supabase) {
+      setIsInitialized(true)
+      return
+    }
+
     try {
       const { data: { user }, error } = await supabase.auth.getUser()
       if (error && error.message === 'Auth session missing!') {
@@ -79,7 +84,7 @@ export default function LoginButton() {
       if (user) {
         await checkAndCreateProfile()
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error initializing session:', error)
       if (error.message !== 'Auth session missing!') {
         toast.error('Oturum başlatılamadı')
@@ -87,9 +92,11 @@ export default function LoginButton() {
     } finally {
       setIsInitialized(true)
     }
-  }, [supabase.auth, checkAndCreateProfile])
+  }, [supabase, checkAndCreateProfile])
 
   useEffect(() => {
+    if (!supabase) return
+
     initializeSession()
 
     const {
@@ -109,9 +116,13 @@ export default function LoginButton() {
     return () => {
       subscription.unsubscribe()
     }
-  }, [supabase.auth, checkAndCreateProfile, initializeSession])
+  }, [supabase, checkAndCreateProfile, initializeSession])
 
   const handleGoogleLogin = async () => {
+    if (!supabase) {
+      toast.error('Supabase configuration is missing')
+      return
+    }
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
@@ -135,6 +146,7 @@ export default function LoginButton() {
   }
 
   const handleSignOut = async () => {
+    if (!supabase) return
     try {
       setLoading(true)
       const { error } = await supabase.auth.signOut()

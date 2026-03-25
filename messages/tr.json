@@ -63,7 +63,7 @@
       "description": "Next.js + Supabase ile geliştirilmiş modern bir yapay zeka SaaS şablonu. Fikirlerinizi hızla ürüne dönüştürmeniz için tam kullanıcı sistemi ve ödeme entegrasyonu içerir.",
       "image": {
         "src": "/imgs/hero.png",
-        "title": "Ship SaaS One Click Şablonu"
+        "title": "Yapay Zekâ SaaS Şablonu"
       },
       "tip": "100’den fazla geliştiricinin SaaS projesini hızla yayına almasına yardımcı oldu",
       "image_position": "right",
@@ -88,7 +88,7 @@
       "items": [
         {
           "name": "what",
-          "title": "Neden Ship SaaS One Click?",
+          "title": "Neden Bu Şablon?",
           "description": "Altyapıyla uğraşmak yerine ürün geliştirmeye odaklanmanız için hepsi bir arada yapay zeka SaaS başlangıç çözümü sunuyoruz.",
           "image": {
             "src": "/imgs/section-1.png"
@@ -215,7 +215,7 @@
     },
     "testimonial": {
       "title": "Geliştirici Yorumları",
-      "description": "Diğer geliştiricilerin Ship SaaS One Click hakkında neler söylediğini görün.",
+      "description": "Diğer geliştiricilerin şablon hakkında neler söylediğini görün.",
       "items": [
         {
           "name": "David Chen",
@@ -277,7 +277,7 @@
         "items": [
           {
             "title": "GitHub",
-            "url": "https://github.com/fengyunzaidushi/ship-saas-one-click",
+            "url": "https://github.com/salihcelebi/masal",
             "target": "_blank"
           },
           {
@@ -334,7 +334,7 @@
               },
               {
                 "title": "GitHub",
-                "url": "https://github.com/fengyunzaidushi/ship-saas-one-click",
+                "url": "https://github.com/salihcelebi/masal",
                 "target": "_blank"
               }
             ]
@@ -484,7 +484,7 @@
       },
       {
         "question": "Hangi ödeme yöntemleri destekleniyor?",
-        "answer": "Alipay, WeChat Pay ve benzeri yaygın ödeme yöntemleri desteklenir."
+        "answer": "Kredi kartı ve Stripe tarafından desteklenen güvenli ödeme yöntemlerini kullanabilirsiniz."
       }
     ]
   }

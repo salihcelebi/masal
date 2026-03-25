@@ -54,10 +54,10 @@ const siteMetadata: SiteMetadata = {
     process.env.NODE_ENV === "production"
       ? "https://shipsaas1click.com" // Üretim ortamı URL'si
       : "http://localhost:3000", // Geliştirme ortamı URL'si
-  siteRepo: "https://github.com/fengyunzaidushi/ship-saas-one-click.git",
+  siteRepo: "https://github.com/salihcelebi/masal",
   siteLogo: `${process.env.BASE_PATH || ""}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ""}/static/images/twitter-card.png`,
-  email: "address@yoursite.com",
+  email: "support@masal.ai",
   github: "https://github.com",
   x: "https://twitter.com/x",
   facebook: "https://facebook.com",
