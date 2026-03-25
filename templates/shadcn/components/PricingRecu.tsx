@@ -12,16 +12,16 @@ import { cn } from "@/lib/utils";
 
 const plans = [
     {
-        name: "Free",
+        name: "Ücretsiz",
         id: "plan-free",
         href: "#",
         price: { monthly: "$0", annually: "$0" },
-        description: "Perfect for trying out our name generator.",
-        actionTitle: "Get started",
+        description: "İsim üreticimizi denemek için ideal.",
+        actionTitle: "Hemen başla",
         features: [
-            "3 name suggestions per generation",
-            "Basic name styles (Modern, Classical)",
-            "Basic character traits",
+            "Her üretimde 3 isim önerisi",
+            "Temel isim stilleri (Modern, Klasik)",
+            "Temel karakter özellikleri",
         ],
         popular: false,
     },
@@ -30,14 +30,14 @@ const plans = [
         id: "plan-pro",
         href: "#",
         price: { monthly: "$9", annually: "$90" },
-        description: "Ideal for serious writers and novelists.",
-        actionTitle: "Get started",
+        description: "Ciddi yazarlar ve romancılar için ideal.",
+        actionTitle: "Hemen başla",
         features: [
-            "10 name suggestions per generation",
-            "All name styles including Fantasy & Gothic",
-            "Advanced character trait combinations",
-            "Name history & meaning analysis",
-            "Save favorite names",
+            "Her üretimde 10 isim önerisi",
+            "Fantastik ve Gotik dahil tüm isim stilleri",
+            "Gelişmiş karakter özellik kombinasyonları",
+            "İsim geçmişi ve anlam analizi",
+            "Favori isimleri kaydet",
         ],
         popular: true,
     },
@@ -49,16 +49,15 @@ export default function () {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-4xl sm:text-center">
                     <h2 className="text-base font-semibold leading-7 text-muted-foreground">
-                        Pricing
+                        Fiyatlandırma
                     </h2>
                     <p className="mt-2 text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                        Choose the perfect plan for your needs
+                        İhtiyacınıza en uygun planı seçin
                     </p>
                 </div>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-center">
-                    ConvertFast offers flexible pricing options to suit developers and
-                    teams of all sizes. Start building stunning landing pages faster than
-                    ever.
+                    ConvertFast, geliştiriciler ve her ölçekte ekip için esnek fiyat seçenekleri sunar.
+                    Etkileyici açılış sayfalarını her zamankinden hızlı oluşturmaya başlayın.
                 </p>
                 <div className="mx-auto max-w-4xl mt-20 flow-root">
                     <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 gap-x-4 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-2 xl:-mx-4">
@@ -82,11 +81,11 @@ export default function () {
                                             {plan.price.monthly}
                                         </span>
                                         <span className="text-sm font-semibold leading-6 text-muted-foreground">
-                                            /month
+                                            /ay
                                         </span>
                                     </CardDescription>
                                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                                        {plan.price.annually} billed annually
+                                        {plan.price.annually} yıllık faturalandırılır
                                     </p>
                                 </CardHeader>
                                 <CardContent>

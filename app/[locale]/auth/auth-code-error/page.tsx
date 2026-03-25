@@ -1,4 +1,4 @@
-// 提示认证错误
+// Kimlik doğrulama hatası bildirimi
 export default function AuthError() {
-    return <div>Auth Error</div>;
+    return <div>Kimlik doğrulama hatası</div>;
 }

@@ -10,7 +10,7 @@ export async function GET() {
     const { data: { user }, error: userError } = await supabase.auth.getUser();
     
     if (userError || !user) {
-      return new NextResponse(JSON.stringify({ error: 'Unauthorized' }), {
+      return new NextResponse(JSON.stringify({ error: 'Yetkisiz işlem' }), {
         status: 401,
       });
     }
@@ -32,7 +32,7 @@ export async function GET() {
     });
   } catch (error) {
     console.error('Error in GET /api/profile:', error);
-    return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), {
+    return new NextResponse(JSON.stringify({ error: 'Sunucu içi hata' }), {
       status: 500,
     });
   }
@@ -48,7 +48,7 @@ export async function POST() {
       error: authError,
     } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Yetkisiz işlem" }, { status: 401 });
     }
 
     // 检查用户档案是否已存在
@@ -59,7 +59,7 @@ export async function POST() {
       .single();
 
     if (!fetchError && profile) {
-      return NextResponse.json({ message: "Profile already exists" });
+      return NextResponse.json({ message: "Profil zaten mevcut" });
     }
 
     // 创建新用户档案
@@ -79,11 +79,11 @@ export async function POST() {
       throw insertError;
     }
 
-    return NextResponse.json({ message: "Profile created successfully" });
+    return NextResponse.json({ message: "Profil başarıyla oluşturuldu" });
   } catch (error) {
     console.error("Error in profile creation:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Sunucu içi hata" },
       { status: 500 }
     );
   }
