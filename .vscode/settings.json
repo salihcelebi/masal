@@ -1,6 +1,11 @@
 {
-    "i18n-ally.localesPaths": [
-        "i18n",
-        "messages"
-    ]
+  "cSpell.words": [
+    "groq",
+    "langchain",
+    "langsmith",
+    "opencanvas",
+    "Signup",
+    "sourounding",
+    "Supabase"
+  ]
 }

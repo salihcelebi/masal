@@ -1,136 +1,182 @@
-# Yapay Zekâ Açılış Sayfası ve Blog Oluşturucu
+# Agent with Auth and Payments Repo
 
-🚀 AI SaaS hızlı küresel yayın şablonu | AI SaaS One Click Template
+A monorepo containing a Agent with Auth and Payments application with LangGraph agents and Next.js UI.
 
-Hepsi bir arada yapay zekâ SaaS girişim şablonu. Açılış sayfası ve blog oluşturucu içerir, i18n çok dilli yapıyı destekler ve ürününüzü hızlıca yayına almanıza yardımcı olur. Next.js + Supabase ile geliştirilmiş modern bir çözümdür.
+## 🏗️ Architecture
 
-## 🌟 Öne Çıkan Özellikler
+This monorepo contains two main applications:
 
-### Yapay zekâ özellikleri
+- **`apps/web`** - Next.js chat UI application with LangGraph integration
+- **`apps/agents`** - LangGraph.js ReAct agents backend
 
-- 🎨 Tek tıkla profesyonel açılış sayfası oluşturma ve çok dilli çeviri
-- 📝 MDX blog/doküman desteği ve çok dilli çeviri
-- 👥 Roman karakter ismi üretici ve çok dilli çeviri
-- 📚 MDX dokümantasyon sitesi ve çok dilli çeviri
+## 🚀 Quick Start
+### Terminal Tab 1:
+```bash
+# Clone the repo
+git clone https://github.com/langchain-ai/agentic-saas-template.git```
 
-### Sistem özellikleri
+#  **Environment Files**: Copy the `.env.example` files to `.env` and fill in credentials
+cp apps/web/.env.example apps/web/.env
+cp apps/agents/.env.example apps/agents/.env
 
-- 🌍 Çok dillilik desteği (i18n)
-- 🔐 Üçüncü taraf giriş entegrasyonu
-  - Google ile giriş
-  - Supabase kimlik doğrulama
-- 💾 Supabase veri depolama
-- 📱 Duyarlı tasarım
-- 🎨 Tailwind CSS tabanlı modern arayüz
+# Install dependencies for all apps
+pnpm install
 
-### Teknoloji yığını
+# Start development servers for both apps
+pnpm dev
+```
+### 🗄️ Database Setup
 
-- Next.js
-- Tailwind CSS
-- Supabase
-- i18n
-- TypeScript
+1. **Database Schema**: Copy and paste `supabase-schema.sql` in your Supabase SQL Editor
 
-## 🚀 Hızlı başlangıç
+### What gets set up:
+- ✅ Users table with Stripe integration
+- ✅ Row Level Security (RLS) policies  
+- ✅ Automatic user profile creation
+- ✅ Performance indexes and triggers
 
-1. Projeyi klonlayın
-   ```bash
-   git clone https://github.com/salihcelebi/masal.git
-   cd masal
-   ```
-2. Bağımlılıkları yükleyin
-   ```bash
-   yarn install
-   ```
-3. Ortam değişkenlerini yapılandırın
+### Terminal Tab 2: Stripe Webhook (for purchases + credits)
 
 ```bash
-cp .env.example .env
+stripe listen --events customer.subscription.created,customer.subscription.updated,customer.subscription.deleted --forward-to localhost:3000/api/webhooks/stripe
 
-# Supabase: https://supabase.com/
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+## add stripe webhook key to apps/web/.env
+STRIPE_WEBHOOK_SECRET=""
+```
+You're ready to use the app!
 
-# OpenAI API anahtarı
-OPENAI_API_KEY=
-OPENAI_API_BASE=
+### Use the App
 
-# Stripe
-STRIPE_PUBLIC_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-
-# Tek seferlik fiyat kimlikleri
-NEXT_PUBLIC_STRIPE_PRICE_ID_BASIC=price_basic_plan_usd
-NEXT_PUBLIC_STRIPE_PRICE_ID_PRO=price_pro_plan_usd
+```markdown
+1. Open localhost:3000
+2. Sign up -> confirm email
+3. login
+4. pricing page --> purchase credits
+   a. should see stripe events in Terminal Tab 3
+5. should see success page, new credits added
+6. back to home, chat with app, credits get deducted
 ```
 
-4. Projeyi başlatın
-   ```bash
-   yarn dev
-   ```
-   Sonucu görmek için `http://localhost:3000` adresini açın.
 
-5. Veritabanını hazırlayın
-   ```bash
-   # Supabase SQL Editor'da aşağıdaki SQL dosyalarını çalıştırın
-   sql/create_character_payment_table.sql
-   sql/create_character_profile_table.sql
-   ```
+## 📦 Package Management
 
-## 📝 Kullanım
+This monorepo uses **pnpm workspaces** for efficient dependency management and task orchestration.
 
-### AI açılış sayfası oluşturma
+### Available Scripts
 
-- `messages/` altındaki locale dosyalarını düzenleyin
-- Tek tıkla çok dilli profesyonel açılış sayfası oluşturun
+#### Root Level Commands
 
-### API dokümanı/blog MDX toplu çeviri
+```bash
+# Development
+pnpm dev              # Start all apps in development mode (parallel)
+pnpm build            # Build all apps
+pnpm lint             # Lint all apps
+pnpm lint:fix         # Fix linting issues in all apps
+pnpm format           # Format code in all apps
+pnpm format:check     # Check code formatting in all apps
+pnpm test             # Run tests in all apps
+pnpm test:int         # Run integration tests in all apps
+pnpm clean            # Clean all build artifacts and node_modules
 
-- `translateblogs/translate` dizinine gidin
-- `translate.py` içinde kaynak ve hedef dili ayarlayın
-- Çevrilecek MDX dosyalarını `translateblogs/translate/docs` altına koyun
-- `translate.py` çalıştırın
-- Çıktılar `translateblogs/translate/translated-docs` altında oluşur
+# Individual App Commands
+pnpm web:dev          # Start only the web app
+pnpm web:build        # Build only the web app
+pnpm agents:dev       # Start only the agents app
+pnpm agents:build     # Build only the agents app
+pnpm agents:test      # Test only the agents app
+pnpm agents:test:int  # Integration tests for agents app
+```
 
-### Karakter ismi üretici
 
-- Karakter ismi üretici sayfasını açın
-- Karakter parametrelerini girin
-- Benzersiz karakter isimleri ve açıklamalar üretin
 
-### Dokümantasyon sitesi
+## 🏗️ Project Structure
 
-- `data/docs` altında markdown/MDX dosyaları oluşturun veya güncelleyin
-- MDX ile React bileşenleri gömebilirsiniz
-- İçindekiler ve gezinim otomatik oluşur
-- İçerikleri çok dilli sürümlere çevirebilirsiniz
+```
+├── apps/
+│   ├── web/                 # Next.js chat UI
+│   │   ├── src/
+│   │   ├── package.json
+│   │   └── ...
+│   └── agents/              # LangGraph agents
+│       ├── src/
+│       ├── package.json
+│       └── ...
+├── package.json             # Root package.json with workspaces
+├── pnpm-workspace.yaml     # pnpm workspace configuration
+├── .npmrc                  # pnpm configuration
+└── README.md
+```
 
-## 🔜 Yol haritası
+## 🛠️ Technology Stack
 
-- [x] Ödeme sistemi entegrasyonu (Stripe)
-- [x] Kullanıcı dil tercihini otomatik algılama
-- [ ] Blog MDX içeriğini tek tıkla üretme
-- [ ] Üretilen isimleri ön yüzde listeleme
-- [ ] Daha fazla yapay zekâ özelliği
-- [ ] Performans optimizasyonu
+### Web App (`apps/web`)
+- **Framework**: Next.js 15
+- **UI**: Radix UI + Tailwind CSS + shadcn/ui
+- **Auth**: Supabase, 
+- **Payments**: Stripe SDK
+- **State**: Nuqs, Zustand
+- **Package Manager**: pnpm
 
-## Örnek proje
+### Agents App (`apps/agents`)
+- **Runtime**: Node.js + TypeScript
+- **Framework**: LangGraph.js
+- **AI**: LangChain + Anthropic
+- **Auth**: Langgraph Middleware
+- **Testing**: Jest
+- **Package Manager**: pnpm
 
-- [Cursor Türkçe Dokümantasyonu](https://cursordocs.com/)
+## 🔧 Development Workflow
 
-## 🤝 Katkı
+### Adding Dependencies
 
-Pull Request gönderebilir veya Issue açabilirsiniz.
+```bash
+# Add to specific app
+pnpm --filter web add <package>
+pnpm --filter agents add <package>
 
-## 📜 Teşekkür
+# Add dev dependency to specific app
+pnpm --filter web add -D <package>
 
-Bu proje aşağıdaki açık kaynak projelerden ilham alır:
+# Add to root (for tooling)
+pnpm add -D <package> -w
+```
 
-- [Pagen AI Landing Page Template](https://github.com/all-in-aigc/pagen-ai-landing-page-template)
-- [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+### Running Tests
 
-## 📄 Lisans
+```bash
+# All tests
+pnpm test
 
-MIT License — detaylar için [LICENSE](LICENSE).
+# Only agents tests
+pnpm agents:test
+
+# Integration tests
+pnpm test:int
+```
+
+### Building for Production
+
+```bash
+# Build all apps
+pnpm build
+
+# Build specific app
+pnpm web:build
+pnpm agents:build
+```
+
+## 🚀 Deployment
+
+Each app can be deployed independently:
+
+- **Web App**: Deploy to Vercel, Netlify, or any Node.js hosting
+- **Agents**: Deploy to any Node.js hosting or containerize with Docker
+
+## 🤝 Contributing
+
+1. Install dependencies: `pnpm install`
+2. Start development: `pnpm dev`
+3. Make your changes
+4. Run tests: `pnpm test`
+5. Format code: `pnpm format`
+6. Submit a pull request
