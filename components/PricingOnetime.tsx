@@ -123,7 +123,7 @@ export default function PricingOnetime() {
                         <div key={idx} className={`relative rounded-2xl border p-8 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                             {plan.popular && (
                                 <Badge className="absolute top-4 right-4" variant="default">
-                                    En Popüler
+                                    En Çok Tercih Edilen
                                 </Badge>
                             )}
                             <div className="mb-6">
@@ -161,7 +161,7 @@ export default function PricingOnetime() {
 
                 {/* FAQ Section */}
                 <div className="mt-20 max-w-3xl mx-auto">
-                    <h3 className="text-2xl font-bold text-center mb-8">Sık Sorulan Sorular</h3>
+                    <h3 className="text-2xl font-bold text-center mb-8">Sıkça Sorulan Sorular</h3>
                     <div className="space-y-6">
                         {faqs.map((faq, idx) => (
                             <div key={idx} className="border-b pb-6">

@@ -40,13 +40,13 @@ interface SiteMetadata {
 }
 
 const siteMetadata: SiteMetadata = {
-  title: "Yapay Zeka SaaS'ını Tek Tıkla Başlat",
+  title: "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al",
   author: "Atalas",
-  headerTitle: "Yapay Zeka SaaS'ını Tek Tıkla Başlat",
+  headerTitle: "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al",
   description:
     "Next.js ve Supabase ile geliştirilmiş hepsi bir arada yapay zeka SaaS başlangıç şablonu. Kullanıcı kimlik doğrulama, Stripe ödeme ve çoklu dil desteği içerir. Fikirlerinizi hızla ürüne dönüştürmek için tek tıkla yayına alın.",
   keywords:
-    "Yapay zeka SaaS şablonu, tek tıkla SaaS başlatma, tek tıkla dağıtım, hızlı SaaS başlangıç şablonu, yapay zeka girişim şablonu, SaaS site oluşturucu, hızlı SaaS kurulum, yapay zeka SaaS iskeleti, Next.js SaaS şablonu, Supabase SaaS şablonu, geliştirici araçları, Stripe ödeme entegrasyonu, kullanıcı kimlik doğrulama sistemi, çok dilli SaaS, teknoloji girişim aracı, bağımsız geliştirici şablonu, modern SaaS teknoloji yığını, yapay zeka ürün geliştirme, uluslararası SaaS şablonu, Vercel tek tıkla dağıtım",
+    "Yapay zekâ SaaS şablonu, tek tıkla SaaS başlatma, tek tıkla dağıtım, hızlı SaaS başlangıç şablonu, yapay zeka girişim şablonu, SaaS site oluşturucu, hızlı SaaS kurulum, yapay zeka SaaS iskeleti, Next.js SaaS şablonu, Supabase SaaS şablonu, geliştirici araçları, Stripe ödeme entegrasyonu, kullanıcı kimlik doğrulama sistemi, çok dilli SaaS, teknoloji girişim aracı, bağımsız geliştirici şablonu, modern SaaS teknoloji yığını, yapay zeka ürün geliştirme, uluslararası SaaS şablonu, Vercel tek tıkla dağıtım",
   language: "tr-TR",
   theme: "system", // system, dark or light
 
@@ -54,10 +54,10 @@ const siteMetadata: SiteMetadata = {
     process.env.NODE_ENV === "production"
       ? "https://shipsaas1click.com" // Üretim ortamı URL'si
       : "http://localhost:3000", // Geliştirme ortamı URL'si
-  siteRepo: "https://github.com/fengyunzaidushi/ship-saas-one-click.git",
+  siteRepo: "https://github.com/salihcelebi/masal",
   siteLogo: `${process.env.BASE_PATH || ""}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ""}/static/images/twitter-card.png`,
-  email: "address@yoursite.com",
+  email: "support@masal.ai",
   github: "https://github.com",
   x: "https://twitter.com/x",
   facebook: "https://facebook.com",

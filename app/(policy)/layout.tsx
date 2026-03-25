@@ -1,18 +1,14 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Policy',
-  description: 'Policy pages',
+  title: 'Yasal Metinler',
+  description: 'Yasal sayfalar',
 }
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode
 }) {
-    return (
-        <div className="policy-layout">
-            {children}
-        </div>
-    );
+  return <div className="policy-layout">{children}</div>
 }

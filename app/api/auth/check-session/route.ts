@@ -28,7 +28,7 @@ export async function GET() {
     } catch (error) {
         console.error('Check session error:', error)
         return NextResponse.json(
-            { error: 'Internal server error' },
+            { error: 'Sunucu içi hata' },
             { status: 500 }
         )
     }
