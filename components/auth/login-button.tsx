@@ -98,11 +98,6 @@ export default function LoginButton() {
   }, [supabase, checkAndCreateProfile])
 
   useEffect(() => {
-    if (!supabase) {
-      setIsInitialized(true)
-      return
-    }
-
     const initFallbackTimeout = setTimeout(() => {
       setIsInitialized(true)
     }, 5000)
@@ -139,7 +134,7 @@ export default function LoginButton() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?locale=${locale}`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/${locale}/workspace`,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
