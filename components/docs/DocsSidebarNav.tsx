@@ -138,7 +138,7 @@ export function DocsSidebarNav({
     return (
       <nav className="w-full" role="navigation" aria-label="Documentation sidebar">
         <div className="p-4 text-sm text-muted-foreground">
-          No documentation available for this language.
+          Bu dil için dokümantasyon bulunmuyor.
         </div>
       </nav>
     )

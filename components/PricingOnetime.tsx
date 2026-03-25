@@ -61,14 +61,14 @@ export default function PricingOnetime() {
     const handlePurchase = async (priceId: string) => {
         console.log("priceId is", priceId)
         if (!userId) {
-            toast.error("Please login first")
+            toast.error("Lütfen önce giriş yapın")
             sessionStorage.setItem('intended_purchase', priceId)
-            router.push("/login")
+            router.push(`/${locale}/login`)
             return
         }
 
         if (loading) {
-            toast.error("Please wait...")
+            toast.error("Lütfen bekleyin...")
             return
         }
 
@@ -97,7 +97,7 @@ export default function PricingOnetime() {
             }
         } catch (error) {
             console.error('Error:', error)
-            toast.error("Something went wrong. Please try again.")
+            toast.error("Bir şeyler ters gitti. Lütfen tekrar deneyin.")
         }
     }
 
@@ -123,7 +123,7 @@ export default function PricingOnetime() {
                         <div key={idx} className={`relative rounded-2xl border p-8 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                             {plan.popular && (
                                 <Badge className="absolute top-4 right-4" variant="default">
-                                    Most Popular
+                                    En Çok Tercih Edilen
                                 </Badge>
                             )}
                             <div className="mb-6">
@@ -161,7 +161,7 @@ export default function PricingOnetime() {
 
                 {/* FAQ Section */}
                 <div className="mt-20 max-w-3xl mx-auto">
-                    <h3 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h3>
+                    <h3 className="text-2xl font-bold text-center mb-8">Sıkça Sorulan Sorular</h3>
                     <div className="space-y-6">
                         {faqs.map((faq, idx) => (
                             <div key={idx} className="border-b pb-6">

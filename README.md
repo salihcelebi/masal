@@ -1,29 +1,29 @@
-# AI Landing Page & Blog Generator
+# Yapay Zekâ Açılış Sayfası ve Blog Oluşturucu
 
-🚀 AI SaaS 快速出海模板 | AI SaaS ONE CLICK Template
+🚀 AI SaaS hızlı küresel yayın şablonu | AI SaaS One Click Template
 
-一站式 AI SaaS 创业模板，内置落地页/博客生成器，支持i18n多语言本，帮助产品快速出海。集成完整用户系统和支付流程，基于 Next.js + Supabase 构建的现代化解决方案。
+Hepsi bir arada yapay zekâ SaaS girişim şablonu. Açılış sayfası ve blog oluşturucu içerir, i18n çok dilli yapıyı destekler ve ürününüzü hızlıca yayına almanıza yardımcı olur. Next.js + Supabase ile geliştirilmiş modern bir çözümdür.
 
-## 🌟 主要特性
+## 🌟 Öne Çıkan Özellikler
 
-### AI 生成功能
+### Yapay zekâ özellikleri
 
-- 🎨 一键生成专业落地页  && 一键翻译多语言
-- 📝 MDX格式博客文档支持 && 一键翻译多语言
-- 👥 小说角色名字生成器  && 一键翻译多语言
-- 📚 MDX格式文档站支持   && 一键翻译多语言
+- 🎨 Tek tıkla profesyonel açılış sayfası oluşturma ve çok dilli çeviri
+- 📝 MDX blog/doküman desteği ve çok dilli çeviri
+- 👥 Roman karakter ismi üretici ve çok dilli çeviri
+- 📚 MDX dokümantasyon sitesi ve çok dilli çeviri
 
-### 系统功能
+### Sistem özellikleri
 
-- 🌍 多语言支持 (i18n)
-- 🔐 第三方登录集成
-  - Google 登录
-  - Supabase 认证
-- 💾 Supabase 数据存储
-- 📱 响应式设计
-- 🎨 基于 Tailwind CSS 的现代UI
+- 🌍 Çok dillilik desteği (i18n)
+- 🔐 Üçüncü taraf giriş entegrasyonu
+  - Google ile giriş
+  - Supabase kimlik doğrulama
+- 💾 Supabase veri depolama
+- 📱 Duyarlı tasarım
+- 🎨 Tailwind CSS tabanlı modern arayüz
 
-### 技术栈
+### Teknoloji yığını
 
 - Next.js
 - Tailwind CSS
@@ -31,114 +31,106 @@
 - i18n
 - TypeScript
 
-## 🚀 快速开始
+## 🚀 Hızlı başlangıç
 
-1. 克隆项目
+1. Projeyi klonlayın
    ```bash
-   git clone https://github.com/fengyunzaidushi/ship-saas-one-click.git
-   cd ship-saas-one-click
+   git clone https://github.com/salihcelebi/masal.git
+   cd masal
    ```
-2. 安装依赖
+2. Bağımlılıkları yükleyin
    ```bash
    yarn install
    ```
-3. 配置环境变量
+3. Ortam değişkenlerini yapılandırın
 
 ```bash
 cp .env.example .env
 
-# 修改下面变量
 # Supabase: https://supabase.com/
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 
-# openai api_key
+# OpenAI API anahtarı
 OPENAI_API_KEY=
 OPENAI_API_BASE=
 
-# stripe
+# Stripe
 STRIPE_PUBLIC_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 
-
-# one time price id
+# Tek seferlik fiyat kimlikleri
 NEXT_PUBLIC_STRIPE_PRICE_ID_BASIC=price_basic_plan_usd
 NEXT_PUBLIC_STRIPE_PRICE_ID_PRO=price_pro_plan_usd
-
-
 ```
 
-4. 启动项目
+4. Projeyi başlatın
    ```bash
    yarn dev
-   访问 http://localhost:3000 查看效果
    ```
-5. 配置数据库
+   Sonucu görmek için `http://localhost:3000` adresini açın.
+
+5. Veritabanını hazırlayın
    ```bash
-   # 创建角色表 在supabase sql editor中执行下面文件中的sql:
-   `sql/create_character_payment_table.sql`
-   `sql/create_character_profile_table.sql`
+   # Supabase SQL Editor'da aşağıdaki SQL dosyalarını çalıştırın
+   sql/create_character_payment_table.sql
+   sql/create_character_profile_table.sql
    ```
 
-## 📝 使用说明
+## 📝 Kullanım
 
-### AI 落地页生成
+### AI açılış sayfası oluşturma
 
-- 修改 messages/zh.json 和 messages/en.json 中的内容
-- 一键生成多语言专业落地页（其他语言同理）
+- `messages/` altındaki locale dosyalarını düzenleyin
+- Tek tıkla çok dilli profesyonel açılış sayfası oluşturun
 
-### api文档、博客等mdx文档批量翻译
+### API dokümanı/blog MDX toplu çeviri
 
-- 进入translateblogs/translate目录
-- 修改translate.py中的源语言和目标语言
-- 需要翻译的mdx文档放入进入translateblogs/translate/docs目录下
-- 运行translate.py
-- 翻译后的mdx文档会放入进入translateblogs/translate/translated-docs目录下
+- `translateblogs/translate` dizinine gidin
+- `translate.py` içinde kaynak ve hedef dili ayarlayın
+- Çevrilecek MDX dosyalarını `translateblogs/translate/docs` altına koyun
+- `translate.py` çalıştırın
+- Çıktılar `translateblogs/translate/translated-docs` altında oluşur
 
-### 角色名字生成器
+### Karakter ismi üretici
 
-- 访问角色名字生成页面
-- 设置角色参数
-- 生成独特的角色描述
+- Karakter ismi üretici sayfasını açın
+- Karakter parametrelerini girin
+- Benzersiz karakter isimleri ve açıklamalar üretin
 
-### 文档站使用
+### Dokümantasyon sitesi
 
-- 在 `data/docs` 目录下创建或修改markdown文档
-- 支持MDX格式，可嵌入React组件
-- 自动生成文档目录和导航
-- 一键翻译文档内容为多语言版本
+- `data/docs` altında markdown/MDX dosyaları oluşturun veya güncelleyin
+- MDX ile React bileşenleri gömebilirsiniz
+- İçindekiler ve gezinim otomatik oluşur
+- İçerikleri çok dilli sürümlere çevirebilirsiniz
 
-## 🔜 开发计划
+## 🔜 Yol haritası
 
-### 待完善功能
+- [x] Ödeme sistemi entegrasyonu (Stripe)
+- [x] Kullanıcı dil tercihini otomatik algılama
+- [ ] Blog MDX içeriğini tek tıkla üretme
+- [ ] Üretilen isimleri ön yüzde listeleme
+- [ ] Daha fazla yapay zekâ özelliği
+- [ ] Performans optimizasyonu
 
-- [x] 支付系统集成
-  - [x] Stripe 支付
-- [x] 自动检测用户语言偏好
-- [ ] 博客mdx格式文章一键生成
-- [ ] 生成的角色名字前台展示
-- [ ] 更多 AI 生成功能
-- [ ] 性能优化
-  
-## 示例项目
+## Örnek proje
 
-- [cursor中文文档](https://cursordocs.com/)
+- [Cursor Türkçe Dokümantasyonu](https://cursordocs.com/)
 
-## 🤝 贡献指南
+## 🤝 Katkı
 
-欢迎提交 Pull Request 或创建 Issue。
+Pull Request gönderebilir veya Issue açabilirsiniz.
 
-## 📜 致谢
+## 📜 Teşekkür
 
-本项目基于以下开源项目:
+Bu proje aşağıdaki açık kaynak projelerden ilham alır:
 
 - [Pagen AI Landing Page Template](https://github.com/all-in-aigc/pagen-ai-landing-page-template)
 - [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
-感谢这些优秀的开源项目！
+## 📄 Lisans
 
-## 📄 许可证
-
-MIT License - 详见 [LICENSE](LICENSE) 文件
+MIT License — detaylar için [LICENSE](LICENSE).

@@ -44,7 +44,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
       <nav className="flex justify-between">
         {!prevPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
+            Önceki
           </button>
         )}
         {prevPage && (
@@ -52,20 +52,20 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
           >
-            Previous
+            Önceki
           </Link>
         )}
         <span>
-          {currentPage} of {totalPages}
+          {currentPage} / {totalPages}
         </span>
         {!nextPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
+            Sonraki
           </button>
         )}
         {nextPage && (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+            Sonraki
           </Link>
         )}
       </nav>
@@ -82,7 +82,7 @@ export default function ListLayoutWithTags({
 }: ListLayoutProps) {
   const pathname = usePathname()
 
-  // 安全地获取标签数据
+  // Etiket verisini güvenli şekilde al
   const getTagCounts = () => {
     try {
       return tagData[locale as keyof typeof tagData] || {}
@@ -110,13 +110,13 @@ export default function ListLayoutWithTags({
           <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div className="px-6 py-4">
               {pathname.endsWith('/blog') || pathname.endsWith('/blog/page/1') ? (
-                <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
+                <h3 className="font-bold uppercase text-primary-500">Tüm Yazılar</h3>
               ) : (
                 <Link
                   href={`/blog`}
                   className="font-bold uppercase text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
                 >
-                  All Posts
+                  Tüm Yazılar
                 </Link>
               )}
               <ul>
@@ -132,7 +132,7 @@ export default function ListLayoutWithTags({
                         <Link
                           href={`/tags/${tagSlug}`}
                           className="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
-                          aria-label={`View posts tagged ${t}`}
+                          aria-label={`${t} etiketiyle işaretlenmiş yazıları görüntüle`}
                         >
                           {`${t} (${tagCounts[t]})`}
                         </Link>
@@ -151,12 +151,12 @@ export default function ListLayoutWithTags({
                   <li
                     key={path}
                     className="py-5"
-                    id={`post-${path}`}  // 添加唯一id便于识别和访问
-                    aria-labelledby={`title-${path}`}  // 关联文章标题，提高可访问性
+                    id={`post-${path}`}  // Erişilebilirlik için benzersiz kimlik ekle
+                    aria-labelledby={`title-${path}`}  // Başlık ile ilişkilendir
                   >
                     <article className="flex flex-col space-y-2 xl:space-y-0">
                       <dl>
-                        <dt className="sr-only">Published on</dt>
+                        <dt className="sr-only">Yayınlanma tarihi</dt>
                         <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                           <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                         </dd>
@@ -164,7 +164,7 @@ export default function ListLayoutWithTags({
                       <div className="space-y-3">
                         <div>
                           <h2
-                            id={`title-${path}`}  // 添加id用于aria-labelledby引用
+                            id={`title-${path}`}  // aria-labelledby için kimlik ekle
                             className="text-2xl font-bold leading-8 tracking-tight"
                           >
                             <Link href={path} className="text-gray-900 dark:text-gray-100">
