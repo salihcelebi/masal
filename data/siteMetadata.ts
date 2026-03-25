@@ -40,24 +40,24 @@ interface SiteMetadata {
 }
 
 const siteMetadata: SiteMetadata = {
-  title: "一键启动你的AI SaaS",
+  title: "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al",
   author: "Atalas",
-  headerTitle: "一键启动你的AI SaaS",
+  headerTitle: "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al",
   description:
-    "一站式AI SaaS启动模板，基于Next.js和Supabase构建。集成用户认证、Stripe支付和多语言支持，助力开发者快速将AI创意转化为产品。一键部署，立即开始你的SaaS创业之旅。",
+    "Next.js ve Supabase ile geliştirilmiş hepsi bir arada yapay zeka SaaS başlangıç şablonu. Kullanıcı kimlik doğrulama, Stripe ödeme ve çoklu dil desteği içerir. Fikirlerinizi hızla ürüne dönüştürmek için tek tıkla yayına alın.",
   keywords:
-    "AI SaaS模板, 一键启动SaaS, 一键部署SaaS, SaaS快速启动模板, AI创业模板, SaaS网站生成器, 快速搭建SaaS, AI SaaS脚手架, Next.js SaaS模板, Supabase SaaS模板, 开发者工具, Stripe支付集成, 用户认证系统, 多语言SaaS, 技术创业工具, 独立开发者模板, 现代SaaS技术栈, AI产品开发, 国际化SaaS模板, Vercel一键部署",
-  language: "zh-CN",
+    "Yapay zekâ SaaS şablonu, tek tıkla SaaS başlatma, tek tıkla dağıtım, hızlı SaaS başlangıç şablonu, yapay zeka girişim şablonu, SaaS site oluşturucu, hızlı SaaS kurulum, yapay zeka SaaS iskeleti, Next.js SaaS şablonu, Supabase SaaS şablonu, geliştirici araçları, Stripe ödeme entegrasyonu, kullanıcı kimlik doğrulama sistemi, çok dilli SaaS, teknoloji girişim aracı, bağımsız geliştirici şablonu, modern SaaS teknoloji yığını, yapay zeka ürün geliştirme, uluslararası SaaS şablonu, Vercel tek tıkla dağıtım",
+  language: "tr-TR",
   theme: "system", // system, dark or light
 
   siteUrl:
     process.env.NODE_ENV === "production"
-      ? "https://shipsaas1click.com" // 生产环境URL
-      : "http://localhost:3000", // 开发环境URL
-  siteRepo: "https://github.com/fengyunzaidushi/ship-saas-one-click.git",
+      ? "https://shipsaas1click.com" // Üretim ortamı URL'si
+      : "http://localhost:3000", // Geliştirme ortamı URL'si
+  siteRepo: "https://github.com/salihcelebi/masal",
   siteLogo: `${process.env.BASE_PATH || ""}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ""}/static/images/twitter-card.png`,
-  email: "address@yoursite.com",
+  email: "support@masal.ai",
   github: "https://github.com",
   x: "https://twitter.com/x",
   facebook: "https://facebook.com",
@@ -67,7 +67,7 @@ const siteMetadata: SiteMetadata = {
   instagram: "https://www.instagram.com",
   medium: "https://medium.com",
   bluesky: "https://bsky.app/",
-  locale: "en-US",
+  locale: "tr-TR",
   stickyNav: true,
   analytics: {
     umamiAnalytics: {

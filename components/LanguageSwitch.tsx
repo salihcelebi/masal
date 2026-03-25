@@ -12,9 +12,10 @@ import { Button } from '@/components/ui/button'
 import { Languages } from 'lucide-react'
 
 const languageMap: { [key: string]: string } = {
-  'en': 'English',
-  'zh': '中文',
-  // 可以根据需要添加更多语言
+  tr: 'Türkçe',
+  en: 'İngilizce',
+  zh: 'Çince',
+  // İhtiyaca göre daha fazla dil eklenebilir
 }
 
 export default function LanguageSwitch() {
@@ -22,13 +23,13 @@ export default function LanguageSwitch() {
   const router = useRouter()
 
   const switchLanguage = (locale: string) => {
-    // 从当前路径中提取出除了语言之外的路径部分
+    // Mevcut yoldan dil dışındaki kısmı çıkar
     const pathWithoutLocale = pathname.split('/').slice(2).join('/')
     const newPath = `/${locale}/${pathWithoutLocale}`
     router.push(newPath)
   }
 
-  // 获取当前语言
+  // Geçerli dili al
   const currentLocale = pathname.split('/')[1]
 
   return (
@@ -36,7 +37,7 @@ export default function LanguageSwitch() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           <Languages className="h-5 w-5" />
-          <span className="sr-only">Switch language</span>
+          <span className="sr-only">Dili değiştir</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
