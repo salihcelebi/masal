@@ -87,7 +87,7 @@ export default function LoginButton() {
       if (user) {
         await checkAndCreateProfile()
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error initializing session:', error)
       if (error.message !== 'Auth session missing!') {
         toast.error('Oturum başlatılamadı')
