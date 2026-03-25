@@ -1,18 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from "openai";
 import { createClient } from '@/lib/supabase/server';
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-  baseURL: process.env.OPENAI_API_BASE,
-});
+
+function getOpenAIClient() {
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) {
+    throw new Error('OpenAI API key is missing')
+  }
+
+  return new OpenAI({
+    apiKey,
+    baseURL: process.env.OPENAI_API_BASE,
+  })
+}
 
 // locale 语言 映射表
 const localeMap = {
   en: 'English',
   zh: 'Chinese',
+  tr: 'Turkish',
 }
 
 export async function POST(request: NextRequest) {
+  const openai = getOpenAIClient()
 
   const supabase = await createClient();
   const locale = request.headers.get('Accept-Language') || 'en'
@@ -79,7 +89,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json(
-      { error: "Failed to generate names" },
+      { error: "İsimler oluşturulamadı" },
       { status: 500 }
     );
   }

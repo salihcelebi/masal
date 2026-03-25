@@ -1,9 +1,9 @@
 const headerNavLinks = [
-  { href: '/', title: 'Home' },
-  { href: '/name-generators', title: 'generators' },
-  { href: '/price', title: 'price' },
+  { href: '/', title: 'Ana Sayfa' },
+  { href: '/name-generators', title: 'Üreticiler' },
+  { href: '/price', title: 'Fiyatlandırma' },
   { href: '/blog', title: 'Blog' },
-  { href: '/tags', title: 'Tags' },
+  { href: '/tags', title: 'Etiketler' },
 
 ]
 
