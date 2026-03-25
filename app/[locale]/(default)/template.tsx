@@ -11,7 +11,7 @@ export default function Template({ children }: ComponentProps<'div'>) {
   const isMounted = useMounted()
   const pathname = usePathname()
 
-  if (!isMounted || pathname.endsWith('/docs')) {
+  if (!isMounted || !pathname || pathname.endsWith('/docs')) {
     return <>{children}</>
   }
 
