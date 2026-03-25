@@ -1,51 +1,25 @@
 ---
-title: Next.js Proje Yapısı
-nav_title: Proje Yapısı
-description: Bir Next.js projesindeki klasör ve dosya kuralları listesi
+title: Sayfa Mimarisi ve Dönüşüm Akışı
+description: Güven veren, hızlı ve satış odaklı web deneyimi için sayfa yapısı.
 ---
 
-Bu sayfa, bir Next.js uygulamasının proje yapısına genel bir bakış sunar. Üst düzey klasörler, dosyalar, yapılandırma dosyaları ve `app` / `pages` dizinlerindeki yönlendirme kuralları özetlenir.
+## Dönüşüm Odaklı Site Yapısı
 
-## Üst Düzey Klasörler
+1. **Hero:** net vaat + ürün çıktısı + tek CTA.
+2. **Kanıt Alanı:** müşteri logoları, vaka metrikleri, kısa video.
+3. **Nasıl Çalışır:** 3 adımlı basit anlatım.
+4. **Fiyat:** iki plan + önerilen plan vurgusu.
+5. **SSS/İtiraz:** fiyat, güvenlik, entegrasyon itirazlarını kıran cevaplar.
+6. **Checkout:** tek sayfa, minimum alan, yüksek güven sinyali.
 
-Üst düzey klasörler uygulama kodunu ve statik varlıkları düzenlemek için kullanılır.
+## Zorunlu UX Kuralları
 
-<Image
-  alt="Yol parçalarından rota parçalarına"
-  srcLight="/docs/light/top-level-folders.png"
-  srcDark="/docs/dark/top-level-folders.png"
-  width="1600"
-  height="525"
-/>
+- Mobilde CTA sabit ve görünür olmalı.
+- Formlar 2 adımdan uzun olmamalı.
+- LCP 2.5 saniyenin altında tutulmalı.
+- Her kritik adımda kullanıcıya net sonraki adım gösterilmeli.
 
-|                                                                          |                              |
-| ------------------------------------------------------------------------ | ---------------------------- |
-| [`app`](/docs/app/building-your-application/routing)                     | App Router                   |
-| [`pages`](/docs/pages/building-your-application/routing)                 | Pages Router                 |
-| [`public`](/docs/app/building-your-application/optimizing/static-assets) | Sunulacak statik varlıklar   |
-| [`src`](/docs/app/building-your-application/configuring/src-directory)   | İsteğe bağlı kaynak klasörü  |
+## İç Bağlantılar
 
-## Üst Düzey Dosyalar
-
-Üst düzey dosyalar uygulamayı yapılandırmak, bağımlılıkları yönetmek, middleware çalıştırmak ve ortam değişkenlerini tanımlamak için kullanılır.
-
-|                                                                                             |                                     |
-| ------------------------------------------------------------------------------------------- | ----------------------------------- |
-| **Next.js**                                                                                 |                                     |
-| [`next.config.js`](/docs/app/api-reference/next-config-js)                                  | Next.js yapılandırma dosyası        |
-| [`package.json`](/docs/getting-started/installation#manual-installation)                    | Proje bağımlılıkları ve scriptler   |
-| [`instrumentation.ts`](/docs/app/building-your-application/optimizing/instrumentation)      | OpenTelemetry ve instrumentation     |
-| [`middleware.ts`](/docs/app/building-your-application/routing/middleware)                   | Next.js istek middleware'i          |
-| [`.env`](/docs/app/building-your-application/configuring/environment-variables)             | Ortam değişkenleri                  |
-| [`.env.local`](/docs/app/building-your-application/configuring/environment-variables)       | Yerel ortam değişkenleri            |
-| [`.env.production`](/docs/app/building-your-application/configuring/environment-variables)  | Üretim ortamı değişkenleri          |
-| [`.env.development`](/docs/app/building-your-application/configuring/environment-variables) | Geliştirme ortamı değişkenleri      |
-| [`.eslintrc.json`](/docs/app/building-your-application/configuring/eslint)                  | ESLint yapılandırma dosyası         |
-| `.gitignore`                                                                                | Yoksayılacak Git dosyaları          |
-| `next-env.d.ts`                                                                             | Next.js TypeScript bildirim dosyası |
-| `tsconfig.json`                                                                             | TypeScript yapılandırma dosyası     |
-| `jsconfig.json`                                                                             | JavaScript yapılandırma dosyası     |
-
-## `app` Yönlendirme Kuralları
-
-Aşağıdaki dosya kuralları, [`app` router](/docs/app) içinde rota tanımı ve metadata yönetimi için kullanılır.
+- [Strateji Ana Sayfası](/docs/getting-started)
+- [Kurulum ve Ölçüm Planı](/docs/getting-started/installation)

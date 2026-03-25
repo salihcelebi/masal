@@ -1,5 +1,5 @@
-import LoginButton from '@/components/auth/login-button'
 import { genPageMetadata } from 'app/seo'
+import LoginClient from './LoginClient'
 
 export async function generateMetadata({
   params,
@@ -19,7 +19,7 @@ export default function LoginPage() {
           Devam etmek için Google hesabınla oturum aç.
         </p>
       </div>
-      <LoginButton />
+      <LoginClient />
     </div>
   )
 }
