@@ -27,7 +27,7 @@ const NameItem = ({ name, index }: { name: GeneratedName; index: number }) => (
   <div className="mb-5">
     <p className="text-lg font-semibold mb-2">{index + 1}. {name.name}：</p>
     <p className="mb-2">{name.description}</p>
-    <p className="text-gray-400">点评：{name.review}</p>
+    <p className="text-gray-400">Yorum:{name.review}</p>
   </div>
 )
 
@@ -74,7 +74,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
       const data = await response.json()
       setGeneratedNames(data.characters)
     } catch (err) {
-      setError(t('errorMessage') || '生成名字时出错,请稍后再试。')
+      setError(t('errorMessage') || 'İsim oluşturulurken hata oluştu, lütfen daha sonra tekrar deneyin.')
     } finally {
       setIsLoading(false)
     }
@@ -139,7 +139,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block font-bold mb-3">设定人物的性别</label>
+                    <label className="block font-bold mb-3">Karakterin cinsiyetini belirleyin</label>
                     <div className="flex gap-4">
                       {defaultConfig.genderOptions.map((gender, idx) => (
                         <Button
@@ -156,7 +156,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
                   </div>
 
                   <div>
-                    <label className="block font-bold mb-3">设定人物的背景</label>
+                    <label className="block font-bold mb-3">Karakterin arka planını belirleyin</label>
                     <div className="flex gap-4">
                       {defaultConfig.genreOptions.map((genre) => (
                         <Button
@@ -173,7 +173,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
                   </div>
 
                   <div>
-                    <label className="block font-bold mb-3">设定姓氏的类型</label>
+                    <label className="block font-bold mb-3">Soyadı stilini belirleyin</label>
                     <div className="flex gap-4">
                       {defaultConfig.nameStyleOptions.map((nameStyle) => (
                         <Button
@@ -190,7 +190,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
                   </div>
 
                   <div>
-                    <label className="block font-bold mb-3">选择生成名字数量</label>
+                    <label className="block font-bold mb-3">Üretilecek isim sayısını seçin</label>
                     <div className="flex gap-4">
                       {defaultConfig.countOptions.map((count) => (
                         <Button
@@ -200,20 +200,20 @@ export default function NameGenerator({ locale }: { locale: string }) {
                           className="w-1/4"
                           onClick={() => setCharacterInfo(prev => ({ ...prev, count }))}
                         >
-                          {count}个
+                          {count} adet
                         </Button>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block font-bold mb-3">提供该人物的性格关键词</label>
+                    <label className="block font-bold mb-3">Karakter için kişilik anahtar kelimeleri girin</label>
                     {renderTraits()}
                     <div className="flex gap-2">
                       <Input
                         value={traitInput}
                         onChange={(e) => setTraitInput(e.target.value)}
-                        placeholder="输入单个关键词"
+                        placeholder="Tek bir anahtar kelime girin"
                         className="flex-grow"
                       />
                       <Button
@@ -221,19 +221,19 @@ export default function NameGenerator({ locale }: { locale: string }) {
                         onClick={handleTraitAdd}
                         className="bg-amber-200 text-neutral-800 hover:bg-amber-300"
                       >
-                        添加关键词
+                        Anahtar kelime ekle
                       </Button>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block font-bold mb-3">补充其他的想法和要求</label>
+                    <label className="block font-bold mb-3">Ek fikir ve gereksinimleri yazın</label>
                     <Textarea
                       name="additionalInfo"
                       value={characterInfo.additionalInfo}
                       onChange={handleInputChange}
                       rows={3}
-                      placeholder="写的是传统武侠小说，所以希望人物名字可以偏向传统武侠一些。"
+                      placeholder="Geleneksel bir kurgu yazıyorum, isimlerin klasik tona yakın olmasını istiyorum."
                     />
                   </div>
 
@@ -242,7 +242,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
                     disabled={isLoading}
                     className="w-full bg-amber-200 text-neutral-800 hover:bg-amber-300 text-xl py-6"
                   >
-                    {isLoading ? '生成中...' : '生成名字'}
+                    {isLoading ? 'Oluşturuluyor...' : 'İsim oluştur'}
                   </Button>
                 </form>
               </CardContent>
@@ -255,7 +255,7 @@ export default function NameGenerator({ locale }: { locale: string }) {
               <CardContent className="p-6">
                 <div className="relative">
                   <h2 className="text-red-500 text-4xl font-bold text-center mb-2">
-                    人物名字定制
+                    Karakter İsmi Özelleştirme
                     <span className="text-xl ml-2">x{characterInfo.count}</span>
                   </h2>
                   <h3 className="text-gray-400 text-center mb-6">
@@ -271,4 +271,3 @@ export default function NameGenerator({ locale }: { locale: string }) {
     </div>
   )
 }
-
