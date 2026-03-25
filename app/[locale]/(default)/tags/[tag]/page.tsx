@@ -16,7 +16,7 @@ export async function generateMetadata(props: {
   const tag = decodeURI(params.tag)
   return genPageMetadata({
     title: tag,
-    description: `Posts tagged with ${tag}`,
+    description: `${tag} etiketiyle işaretlenmiş yazılar`,
     alternates: {
       canonical: './',
       types: {
@@ -40,7 +40,7 @@ export const generateStaticParams = async () => {
 export default async function TagPage(props: { params: Promise<{ tag: string, locale: string }> }) {
   const params = await props.params
   const tag = decodeURI(params.tag)
-  // Capitalize first letter and convert space to dash
+  // İlk harfi büyüt ve boşlukları tireye çevir
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
     sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))

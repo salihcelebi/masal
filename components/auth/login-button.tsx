@@ -29,7 +29,7 @@ export default function LoginButton() {
   const params = useParams()
   const locale = params.locale as string
 
-  // 从服务端获取用户档案信息
+  // Sunucudan kullanıcı profil bilgilerini al
   const fetchUserProfile = useCallback(async () => {
     try {
       const response = await fetch('/api/profile')
@@ -40,11 +40,11 @@ export default function LoginButton() {
       setCredits(data.credits)
     } catch (error) {
       console.error('Error fetching user profile:', error)
-      toast.error('Failed to fetch user profile')
+      toast.error('Kullanıcı profili alınamadı')
     }
   }, [])
 
-  // 检查并创建用户档案
+  // Kullanıcı profilini kontrol et ve oluştur
   const checkAndCreateProfile = useCallback(async () => {
     try {
       const response = await fetch('/api/profile', {
@@ -61,11 +61,11 @@ export default function LoginButton() {
       await fetchUserProfile()
     } catch (error) {
       console.error('Error checking/creating profile:', error)
-      toast.error('Failed to create user profile')
+      toast.error('Kullanıcı profili oluşturulamadı')
     }
   }, [fetchUserProfile])
 
-  // 初始化用户会话
+  // Kullanıcı oturumunu başlat
   const initializeSession = useCallback(async () => {
     try {
       const { data: { user }, error } = await supabase.auth.getUser()
@@ -82,14 +82,18 @@ export default function LoginButton() {
     } catch (error) {
       console.error('Error initializing session:', error)
       if (error.message !== 'Auth session missing!') {
-        toast.error('Failed to initialize session')
+        toast.error('Oturum başlatılamadı')
       }
     } finally {
       setIsInitialized(true)
     }
-  }, [supabase.auth, checkAndCreateProfile])
+  }, [supabase, checkAndCreateProfile])
 
   useEffect(() => {
+    const initFallbackTimeout = setTimeout(() => {
+      setIsInitialized(true)
+    }, 5000)
+
     initializeSession()
 
     const {
@@ -107,9 +111,10 @@ export default function LoginButton() {
     })
 
     return () => {
+      clearTimeout(initFallbackTimeout)
       subscription.unsubscribe()
     }
-  }, [supabase.auth, checkAndCreateProfile, initializeSession])
+  }, [supabase, checkAndCreateProfile, initializeSession])
 
   const handleGoogleLogin = async () => {
     try {
@@ -128,7 +133,7 @@ export default function LoginButton() {
       if (error) throw error
     } catch (error) {
       console.error('Error logging in:', error)
-      toast.error('Failed to sign in with Google')
+      toast.error('Google ile giriş yapılamadı')
     } finally {
       setLoading(false)
     }
@@ -139,18 +144,18 @@ export default function LoginButton() {
       setLoading(true)
       const { error } = await supabase.auth.signOut()
       if (error) throw error
-      toast.success('Signed out successfully')
+      toast.success('Başarıyla çıkış yapıldı')
     } catch (error) {
       console.error('Error signing out:', error)
-      toast.error('Failed to sign out')
+      toast.error('Çıkış yapılamadı')
     } finally {
       setLoading(false)
     }
   }
 
-  // 在初始化完成之前显示加载状态
+  // Başlatma tamamlanmadan önce yüklenme durumunu göster
   if (!isInitialized) {
-    return <Button variant="ghost" disabled>Loading...</Button>
+    return <Button variant="ghost" disabled>Yükleniyor...</Button>
   }
 
   if (user) {
@@ -183,7 +188,7 @@ export default function LoginButton() {
               )}
               {credits !== null && (
                 <p className="text-sm text-muted-foreground">
-                  Credits: {credits}
+                  Kredi: {credits}
                 </p>
               )}
             </div>
