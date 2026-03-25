@@ -21,6 +21,7 @@ const languageMap: { [key: string]: string } = {
 export default function LanguageSwitch() {
   const pathname = usePathname()
   const router = useRouter()
+  const safePathname = pathname || '/'
 
   const switchLanguage = (locale: string) => {
     // Mevcut yoldan dil dışındaki kısmı çıkar
