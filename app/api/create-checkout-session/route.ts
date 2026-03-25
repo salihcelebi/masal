@@ -9,7 +9,7 @@ function getStripeClient() {
   }
 
   return new Stripe(secretKey, {
-    apiVersion: "2025-02-24.acacia",
+    apiVersion: "2024-11-20.acacia",
   })
 }
 
