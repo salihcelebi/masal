@@ -16,6 +16,7 @@ const Header = () => {
   const [loginError, setLoginError] = useState<Error | null>(null)
   const t = useTranslations('saas_one.header.nav')
   const navItems = t.raw('items')
+  const safeNavItems = Array.isArray(navItems) ? navItems : []
 
   useEffect(() => {
     setMounted(true)
@@ -50,7 +51,7 @@ const Header = () => {
         </Link>
         <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
           <div className="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
-            {navItems
+            {safeNavItems
               .filter((link) => link.url !== '/')
               .map((link) => (
                 <Link
