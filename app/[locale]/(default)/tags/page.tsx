@@ -23,7 +23,7 @@ export default async function TagsPage({
   params: Promise<{ locale: string }>
 }) {
   const resolvedParams = await params
-  const tagCounts = tagData[resolvedParams.locale] as Record<string, number>
+  const tagCounts = (tagData[resolvedParams.locale] || tagData['en']) as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   return (

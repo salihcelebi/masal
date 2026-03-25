@@ -63,7 +63,7 @@ export default function PricingOnetime() {
         if (!userId) {
             toast.error("Lütfen önce giriş yapın")
             sessionStorage.setItem('intended_purchase', priceId)
-            router.push("/login")
+            router.push(`/${locale}/login`)
             return
         }
 

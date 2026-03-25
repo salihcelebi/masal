@@ -22,7 +22,7 @@
         "title": "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al",
         "avatar": {
           "src": "/imgs/logo.png",
-          "title": "Ship SaaS One Click - Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al"
+          "title": "Yapay Zekâ SaaS'ını Tek Tıkla Yayına Al"
         },
         "url": "/"
       },
@@ -204,7 +204,7 @@
     },
     "cta": {
       "title": "SaaS Projenizi Yayına Almaya Hazır mısınız?",
-      "description": "Ship SaaS One Click'i şimdi kullanmaya başlayın ve fikirlerinizi hızla hayata geçirin!",
+      "description": "Şablonu şimdi kullanmaya başlayın ve fikirlerinizi hızla hayata geçirin!",
       "buttons": [
         {
           "title": "Ücretsiz Başlayın",
@@ -245,7 +245,7 @@
     },
     "faq": {
       "title": "Sıkça Sorulan Sorular",
-      "description": "Ship SaaS One Click hakkında sık sorulan sorular.",
+      "description": "Şablon hakkında sıkça sorulan sorular.",
       "items": [
         {
           "title": "Bu şablonu kullanmak için hangi teknik bilgiye sahip olmam gerekiyor?",

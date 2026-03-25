@@ -95,7 +95,9 @@ export default function LoginButton() {
   }, [supabase, checkAndCreateProfile])
 
   useEffect(() => {
-    if (!supabase) return
+    const initFallbackTimeout = setTimeout(() => {
+      setIsInitialized(true)
+    }, 5000)
 
     initializeSession()
 
@@ -114,6 +116,7 @@ export default function LoginButton() {
     })
 
     return () => {
+      clearTimeout(initFallbackTimeout)
       subscription.unsubscribe()
     }
   }, [supabase, checkAndCreateProfile, initializeSession])
