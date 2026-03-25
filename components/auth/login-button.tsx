@@ -24,7 +24,10 @@ export default function LoginButton() {
   const [user, setUser] = useState<User | null>(null)
   const [credits, setCredits] = useState<number | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
-  const supabase = createClient()
+  const hasSupabaseConfig = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
+  const supabase = hasSupabaseConfig ? createClient() : null
   const t = useTranslations('public.auth')
   const params = useParams()
   const locale = params.locale as string
@@ -68,10 +71,10 @@ export default function LoginButton() {
   // Kullanıcı oturumunu başlat
   const initializeSession = useCallback(async () => {
     if (!supabase) {
+      setUser(null)
       setIsInitialized(true)
       return
     }
-
     try {
       const { data: { user }, error } = await supabase.auth.getUser()
       if (error && error.message === 'Auth session missing!') {
@@ -95,7 +98,9 @@ export default function LoginButton() {
   }, [supabase, checkAndCreateProfile])
 
   useEffect(() => {
-    if (!supabase) return
+    const initFallbackTimeout = setTimeout(() => {
+      setIsInitialized(true)
+    }, 5000)
 
     initializeSession()
 
@@ -114,13 +119,14 @@ export default function LoginButton() {
     })
 
     return () => {
+      clearTimeout(initFallbackTimeout)
       subscription.unsubscribe()
     }
   }, [supabase, checkAndCreateProfile, initializeSession])
 
   const handleGoogleLogin = async () => {
     if (!supabase) {
-      toast.error('Supabase configuration is missing')
+      toast.error('Giriş şu anda kullanılamıyor')
       return
     }
     try {
@@ -128,7 +134,7 @@ export default function LoginButton() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?locale=${locale}`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/${locale}/builder-choice`,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
@@ -146,7 +152,10 @@ export default function LoginButton() {
   }
 
   const handleSignOut = async () => {
-    if (!supabase) return
+    if (!supabase) {
+      toast.error('Çıkış şu anda kullanılamıyor')
+      return
+    }
     try {
       setLoading(true)
       const { error } = await supabase.auth.signOut()

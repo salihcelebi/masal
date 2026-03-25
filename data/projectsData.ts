@@ -7,18 +7,17 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
+    title: 'Bir Arama Motoru',
+    description: `Dünyadaki herhangi bir bilgiyi arayabildiğinizi düşünün. Web sayfaları, görseller, videolar
+    ve daha fazlası. Google, aradığınızı tam olarak bulmanıza yardımcı olan birçok özellikle gelir.`,
     imgSrc: '/static/images/google.png',
     href: 'https://www.google.com',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
+    title: 'Zaman Makinesi',
+    description: `Geçmişe veya geleceğe seyahat edebildiğinizi hayal edin. Kadranı istediğiniz tarihe çevirip
+    "Git" düğmesine basmanız yeterli. Bu basit ve uygun maliyetli çözümle kayıp anahtarlar
+    veya unutulan kulaklıklar için endişelenmeyin.`,
     imgSrc: '/static/images/time-machine.jpg',
     href: '/blog/the-time-machine',
   },
