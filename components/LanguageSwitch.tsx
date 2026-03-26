@@ -25,13 +25,13 @@ export default function LanguageSwitch() {
 
   const switchLanguage = (locale: string) => {
     // Mevcut yoldan dil dışındaki kısmı çıkar
-    const pathWithoutLocale = safePathname.split('/').slice(2).join('/')
+    const pathWithoutLocale = pathname.split('/').slice(2).join('/')
     const newPath = `/${locale}/${pathWithoutLocale}`
     router.push(newPath)
   }
 
   // Geçerli dili al
-  const currentLocale = safePathname.split('/')[1]
+  const currentLocale = pathname.split('/')[1]
 
   return (
     <DropdownMenu>

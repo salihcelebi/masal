@@ -11,11 +11,11 @@ import Testimonial from "../components/Testimonial";
 import dynamic from 'next/dynamic';
 
 const NameGenerator = dynamic(() => import('../components/NameGenerator'), {
-  loading: () => <div>Loading...</div>
+  loading: () => <div>Yükleniyor...</div>
 });
 
 const PricingOnetime = dynamic(() => import('../../../components/PricingOnetime'), {
-  loading: () => <div>Loading...</div>
+  loading: () => <div>Yükleniyor...</div>
 });
 
 const scrollVariants = {
@@ -69,7 +69,7 @@ export default function ShadcnLandingPage({ locale }) {
         <Feature />
       </motion.div>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Yükleniyor...</div>}>
         <motion.div
           initial="hidden"
           whileInView="visible"
